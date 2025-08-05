@@ -8,6 +8,7 @@ import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { useColorScheme } from "react-native";
 import "react-native-reanimated";
+import "../global.css";
 
 export default function RootLayout() {
   const colorScheme = useColorScheme();
@@ -23,10 +24,20 @@ export default function RootLayout() {
   return (
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
       <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" />
+        <Stack.Screen
+          name="(onboarding)/index"
+          options={{
+            // headerShown: false,
+            title: "Onboarding",
+            headerStyle: {
+              backgroundColor: colorScheme === "dark" ? "#333" : "#0c4a6e",
+            },
+            headerTintColor: colorScheme === "dark" ? "#fff" : "#fff",
+          }}
+        />
+        <Stack.Screen name="(tabs)" />
       </Stack>
-      <StatusBar style="auto" />
+      <StatusBar style="light" />
     </ThemeProvider>
   );
 }

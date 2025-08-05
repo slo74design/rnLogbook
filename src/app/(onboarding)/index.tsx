@@ -1,3 +1,4 @@
+import { Link } from "expo-router";
 import { Text, View } from "react-native";
 
 export default function Index() {
@@ -9,7 +10,10 @@ export default function Index() {
         alignItems: "center",
       }}
     >
-      <Text>Edit app/index.tsx to edit this screen.</Text>
+      <Text>OnBoarding Screen.</Text>
+      <Link href="/(tabs)" asChild>
+        <Text style={{ color: "blue", marginTop: 20 }}>Go to Tabs</Text>
+      </Link>
     </View>
   );
 }
