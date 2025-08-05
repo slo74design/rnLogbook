@@ -15,7 +15,6 @@ import { useStore } from "../store/useStore";
 export default function RootLayout() {
   const colorScheme = useColorScheme();
   const { hasCompletedOnboarding, resetOnboarding } = useStore();
-  console.log("hasCompletedOnboarding", hasCompletedOnboarding);
 
   useEffect(() => {
     const third = setTimeout(() => {
@@ -30,6 +29,10 @@ export default function RootLayout() {
 
   const [loaded] = useFonts({
     SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
+    WorkSans: require("../assets/fonts/WorkSans-Regular.ttf"),
+    WorkSansBold: require("../assets/fonts/WorkSans-Bold.ttf"),
+    WorkSansBlack: require("../assets/fonts/WorkSans-Black.ttf"),
+    WorkSansLight: require("../assets/fonts/WorkSans-Light.ttf"),
   });
 
   if (!loaded) {
@@ -39,7 +42,7 @@ export default function RootLayout() {
 
   return (
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-      <StatusBar style="auto" />
+      <StatusBar style="light" />
       <Stack>
         <Stack.Protected guard={hasCompletedOnboarding}>
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />

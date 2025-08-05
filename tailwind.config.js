@@ -7,7 +7,22 @@ module.exports = {
   ],
   presets: [require("nativewind/preset")],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        SL: {
+          DEFAULT: "#1D3557", // Tailwind's blue-500
+          light: "#60A5FA", // Tailwind's blue-300
+          dark: "#2563EB", // Tailwind's blue-700
+        },
+      },
+      fontFamily: {
+        SpaceMono: ["SpaceMono", "monospace"],
+        WorkSans: ["WorkSans", "sans-serif"],
+        WorkSansBold: ["WorkSansBold", "sans-serif"],
+        WorkSansBlack: ["WorkSansBlack", "sans-serif"],
+        WorkSansLight: ["WorkSansLight", "sans-serif"],
+      },
+    },
   },
   plugins: [],
 };
