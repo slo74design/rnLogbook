@@ -35,21 +35,21 @@ export default function SLButton({
   // Alternativa manual: const mergedClasses = `${baseClasses} ${className || ''}`;
 
   return (
-    <Pressable
-      onPress={onPress}
-      className={mergedClasses} // Usa la cadena de clases fusionada
-      disabled={disabled}
-      {...rest}
-    >
-      <Text
-        className={`
-          text-xl uppercase font-WorkSansBold
+      <Pressable
+          onPress={onPress}
+          className={mergedClasses} // Usa la cadena de clases fusionada
+          disabled={disabled}
+          {...rest}
+      >
+          <Text
+              className={`
+          text-base uppercase font-WorkSansBold tracking-wider
           ${(isPrimary || isTertiary) && "text-rose-100"}
           ${isSecondary && "text-SL-dark"}
         `}
-      >
-        {title}
-      </Text>
-    </Pressable>
+          >
+              {title}
+          </Text>
+      </Pressable>
   );
 }

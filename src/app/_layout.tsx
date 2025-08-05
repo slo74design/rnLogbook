@@ -41,19 +41,22 @@ export default function RootLayout() {
   }
 
   return (
-    <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-      <StatusBar style="light" />
-      <Stack>
-        <Stack.Protected guard={hasCompletedOnboarding}>
-          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        </Stack.Protected>
-        <Stack.Protected guard={!hasCompletedOnboarding}>
-          <Stack.Screen
-            name="(onboarding)/index"
-            options={{ headerShown: false }}
-          />
-        </Stack.Protected>
-      </Stack>
-    </ThemeProvider>
+      <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
+          <StatusBar style="auto" />
+          <Stack>
+              <Stack.Protected guard={hasCompletedOnboarding}>
+                  <Stack.Screen
+                      name="(tabs)"
+                      options={{ headerShown: false }}
+                  />
+              </Stack.Protected>
+              <Stack.Protected guard={!hasCompletedOnboarding}>
+                  <Stack.Screen
+                      name="(onboarding)/index"
+                      options={{ headerShown: false }}
+                  />
+              </Stack.Protected>
+          </Stack>
+      </ThemeProvider>
   );
 }
