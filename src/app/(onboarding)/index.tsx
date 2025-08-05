@@ -1,7 +1,8 @@
-import { Link } from "expo-router";
-import { Text, View } from "react-native";
+import { useStore } from "@/src/store/useStore";
+import { Button, Text, View } from "react-native";
 
 export default function Index() {
+  const { completeOnboarding } = useStore();
   return (
     <View
       style={{
@@ -11,9 +12,7 @@ export default function Index() {
       }}
     >
       <Text>OnBoarding Screen.</Text>
-      <Link href="/(tabs)" asChild>
-        <Text style={{ color: "blue", marginTop: 20 }}>Go to Tabs</Text>
-      </Link>
+      <Button onPress={completeOnboarding} title="Go to Tabs" />
     </View>
   );
 }
