@@ -1,5 +1,6 @@
+import { HapticTab } from "@/src/components/HapticTab";
+import AntDesign from "@expo/vector-icons/AntDesign";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import { Tabs } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { View } from "react-native";
@@ -27,8 +28,8 @@ export default function TabLayout() {
             position: "absolute",
             bottom: 10,
             borderRadius: 25,
-            marginHorizontal: 10,
-            marginBottom: 10,
+            marginHorizontal: 20,
+            marginBottom: 15,
             paddingVertical: 0,
             height: 60,
           },
@@ -43,16 +44,46 @@ export default function TabLayout() {
           tabBarItemStyle: {
             paddingVertical: 10,
           },
+          tabBarButton: HapticTab,
+          animation: "fade",
         }}
       >
         <Tabs.Screen
           name="index"
           options={{
             title: "Home",
-            tabBarIcon: ({ color, focused }) => (
-              <MaterialCommunityIcons
-                name={focused ? "dots-grid" : "dots-circle"}
-                size={30}
+            tabBarIcon: ({ color, focused, size }) => (
+              <Ionicons
+                name="list"
+                size={28}
+                color={focused ? "#312e81" : "#94a3b8"}
+              />
+            ),
+          }}
+        />
+        <Tabs.Screen
+          name="new/index"
+          options={{
+            title: "New",
+          }}
+          listeners={{
+            tabPress: (e) => {
+              // Prevent default behavior
+              e.preventDefault();
+              // Navigate to the new card creation screen
+              // You can replace this with your navigation logic
+              console.log("Navigate to new card creation");
+            },
+          }}
+        />
+        <Tabs.Screen
+          name="goals/index"
+          options={{
+            title: "Goals",
+            tabBarIcon: ({ color, focused, size }) => (
+              <AntDesign
+                name="rocket1"
+                size={28}
                 color={focused ? "#312e81" : "#94a3b8"}
               />
             ),
@@ -61,14 +92,7 @@ export default function TabLayout() {
         <Tabs.Screen
           name="settings/index"
           options={{
-            title: "Settings",
-            tabBarIcon: ({ color, focused }) => (
-              <Ionicons
-                name={focused ? "settings" : "settings-outline"}
-                size={30}
-                color={focused ? "#312e81" : "#94a3b8"}
-              />
-            ),
+            href: null,
           }}
         />
       </Tabs>
