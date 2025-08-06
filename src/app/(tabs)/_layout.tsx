@@ -1,11 +1,12 @@
 import { HapticTab } from "@/src/components/HapticTab";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import { Tabs } from "expo-router";
+import { Tabs, useRouter } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { View } from "react-native";
 
 export default function TabLayout() {
+  const router = useRouter(); // Inicializa useRouter
   // Opcional: puedes usar estado para cambiar el título dinámicamente basado en la ruta
   return (
     <View style={{ flex: 1 }}>
@@ -24,7 +25,9 @@ export default function TabLayout() {
           headerTitleAlign: "left",
           tabBarStyle: {
             backgroundColor: "#f8fafc",
-            borderTopWidth: 0,
+            borderColor: "#e5e7eb",
+            borderBottomWidth: 1,
+            shadowColor: "#000",
             position: "absolute",
             bottom: 10,
             borderRadius: 25,
@@ -64,15 +67,20 @@ export default function TabLayout() {
         <Tabs.Screen
           name="new/index"
           options={{
-            title: "New",
+            title: "New Activity",
+            tabBarIcon: ({ color, focused, size }) => (
+              <AntDesign
+                name="plus"
+                size={28}
+                color={focused ? "#312e81" : "#db2777"}
+              />
+            ),
           }}
           listeners={{
             tabPress: (e) => {
               // Prevent default behavior
               e.preventDefault();
-              // Navigate to the new card creation screen
-              // You can replace this with your navigation logic
-              console.log("Navigate to new card creation");
+              router.push("/modal-newActivity");
             },
           }}
         />
